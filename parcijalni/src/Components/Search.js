@@ -1,17 +1,54 @@
 import React, { useState } from "react";
+import Data from "./Data";
 
-const Form = (setSearch) => {
+const Form = () => {
+  const [search, setSearch] = useState("");
+  const [data, setData] = useState("");
+  const [user, setUser] = useState();
+
+  function fetchUser(e) {
+    e.preventDefault();
+    if (search) {
+      const url = `https://api.github.com/users/${search}`;
+      fetch(url)
+        .then((response) => response.json())
+        .then((user) => setUser(user));
+    }
+    setSearch("");
+  }
+
+  // function fetchData(e) {
+  //   e.preventDefault();
+  //   if (user) {
+  //     const url = `https://api.github.com/users/${search}/repos`;
+  //     fetch(url)
+  //       .then((response) => response.json())
+  //       .then((repo) => setData(repo));
+  //   }
+  //   setSearch("");
+  // }
+
   return (
     <div>
       <form>
         <label>GitHub Username:</label>
+        <br></br>
         <input
           type="text"
           placeholder="e.g. reduxjs"
           onChange={(e) => setSearch(e.target.value)}
         ></input>
       </form>
-      <button>GO!</button>
+
+      <button
+        onClick={(e) => {
+          fetchUser(e);
+          // fetchData(e);
+        }}
+      >
+        GO!
+      </button>
+      <Data user={user} data={data} />
     </div>
   );
 };

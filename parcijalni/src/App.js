@@ -1,19 +1,10 @@
-import { useState } from "react";
 import "./App.css";
-import View from "./Components/View";
+import Search from "./Components/Search";
 
 function App() {
-  const [search, setSearch] = useState("");
-  const [data, setData] = useState();
-
   return (
     <div className="App">
-      <View
-        data={data}
-        setData={setData}
-        setSearch={setSearch}
-        search={search}
-      />
+      <Search />
     </div>
   );
 }
