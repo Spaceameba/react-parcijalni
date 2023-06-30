@@ -3,7 +3,7 @@ import Data from "./Data";
 
 const Form = () => {
   const [search, setSearch] = useState("");
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   const [user, setUser] = useState();
 
   function fetchUser(e) {
@@ -20,12 +20,13 @@ const Form = () => {
   // function fetchData(e) {
   //   e.preventDefault();
   //   if (user) {
-  //     const url = `https://api.github.com/users/${search}/repos`;
+  //     const url = `${user.repos_url}`;
   //     fetch(url)
   //       .then((response) => response.json())
   //       .then((repo) => setData(repo));
+  //   } else {
+  //     setData();
   //   }
-  //   setSearch("");
   // }
 
   return (
@@ -43,7 +44,7 @@ const Form = () => {
       <button
         onClick={(e) => {
           fetchUser(e);
-          // fetchData(e);
+          // if (user) fetchData(e);
         }}
       >
         GO!

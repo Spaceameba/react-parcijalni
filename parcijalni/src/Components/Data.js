@@ -16,12 +16,14 @@ const Data = ({ user, data }) => {
           <p>{user.bio}</p>
         </div>
       )}
-      {/* {data.lenght > 0 && ()} */}
-      {/* <ul>
-        {data.map((repository) => {
-          return <li key={repository.id}></li>;
-        })}
-      </ul> */}
+      <hr></hr>
+      {data && (
+        <ul>
+          {data.map((repository) => {
+            return <li key={repository.id}>{repository.name}</li>;
+          })}
+        </ul>
+      )}
     </>
   );
 };
