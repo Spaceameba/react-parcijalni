@@ -13,8 +13,13 @@ const Form = () => {
       fetch(url)
         .then((response) => response.json())
         .then((user) => setUser(user));
+      setSearch("");
     }
-    setSearch("");
+  }
+
+  function resetSearch() {
+    setUser("");
+    setData([]);
   }
 
   // function fetchData(e) {
@@ -37,6 +42,7 @@ const Form = () => {
         <input
           type="text"
           placeholder="e.g. reduxjs"
+          value={search}
           onChange={(e) => setSearch(e.target.value)}
         ></input>
       </form>
@@ -49,7 +55,7 @@ const Form = () => {
       >
         GO!
       </button>
-      <Data user={user} data={data} />
+      <Data user={user} data={data} resetSearch={resetSearch} />
     </div>
   );
 };

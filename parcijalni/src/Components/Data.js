@@ -1,6 +1,6 @@
 import React from "react";
 
-const Data = ({ user, data }) => {
+const Data = ({ resetSearch, user, data }) => {
   return (
     <>
       {user && (
@@ -24,6 +24,13 @@ const Data = ({ user, data }) => {
           })}
         </ul>
       )}
+      <button
+        onClick={(e) => {
+          resetSearch(e);
+        }}
+      >
+        Reset
+      </button>
     </>
   );
 };
