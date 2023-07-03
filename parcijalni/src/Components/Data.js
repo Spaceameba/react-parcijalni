@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Data = ({ resetSearch, user, data }) => {
   return (
@@ -17,13 +18,13 @@ const Data = ({ resetSearch, user, data }) => {
         </div>
       )}
       <hr></hr>
-      {data && (
+      {/* {data && (
         <ul>
           {data.map((repository) => {
             return <li key={repository.id}>{repository.name}</li>;
           })}
         </ul>
-      )}
+      )} */}
       <button
         onClick={(e) => {
           resetSearch(e);
@@ -33,6 +34,12 @@ const Data = ({ resetSearch, user, data }) => {
       </button>
     </>
   );
+};
+
+Data.propTypes = {
+  resetSearch: PropTypes.func,
+  user: PropTypes.string,
+  data: PropTypes.array,
 };
 
 export default Data;
