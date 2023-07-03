@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Button from "react-bootstrap/Button";
 
 const Data = ({ resetSearch, user, data }) => {
   return (
@@ -25,13 +26,14 @@ const Data = ({ resetSearch, user, data }) => {
           })}
         </ul>
       )} */}
-      <button
+      <Button
+        variant="danger"
         onClick={(e) => {
           resetSearch(e);
         }}
       >
         Reset
-      </button>
+      </Button>
     </>
   );
 };

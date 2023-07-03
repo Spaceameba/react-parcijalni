@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Data from "./Data";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
-const Form = () => {
+const Search = () => {
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
   const [user, setUser] = useState();
@@ -36,28 +38,31 @@ const Form = () => {
 
   return (
     <div>
-      <form>
-        <label>GitHub Username:</label>
-        <br></br>
-        <input
-          type="text"
-          placeholder="e.g. reduxjs"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        ></input>
-      </form>
+      <Form>
+        <Form.Group className="mb-3" controlId="formSearch">
+          <Form.Label clasName="label">GitHub Username:</Form.Label>
+          <br></br>
+          <Form.Control
+            type="text"
+            placeholder="e.g. reduxjs"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
 
-      <button
-        onClick={(e) => {
-          fetchUser(e);
-          // if (user) fetchData(e);
-        }}
-      >
-        GO!
-      </button>
-      <Data user={user} data={data} resetSearch={resetSearch} />
+        <Button
+          variant="dark"
+          onClick={(e) => {
+            fetchUser(e);
+            // if (user) fetchData(e);
+          }}
+        >
+          GO!
+        </Button>
+        <Data user={user} data={data} resetSearch={resetSearch} />
+      </Form>
     </div>
   );
 };
 
-export default Form;
+export default Search;
